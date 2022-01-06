@@ -1,0 +1,6 @@
+0.8.2
+pypi(future)
+pypi(gevent)
+pypi(pyyaml)
+pypi(requests)
+pypi(six)
