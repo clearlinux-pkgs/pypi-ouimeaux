@@ -4,7 +4,7 @@
 #
 Name     : pypi-ouimeaux
 Version  : 0.8.2
-Release  : 23
+Release  : 24
 URL      : https://files.pythonhosted.org/packages/42/d6/f7a8804e25b0831dd729b11e66b45e3ea2f72a1748aaabd56a58abaf7ad2/ouimeaux-0.8.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/42/d6/f7a8804e25b0831dd729b11e66b45e3ea2f72a1748aaabd56a58abaf7ad2/ouimeaux-0.8.2.tar.gz
 Summary  : Open source control for Belkin WeMo devices
@@ -14,11 +14,8 @@ Requires: pypi-ouimeaux-bin = %{version}-%{release}
 Requires: pypi-ouimeaux-license = %{version}-%{release}
 Requires: pypi-ouimeaux-python = %{version}-%{release}
 Requires: pypi-ouimeaux-python3 = %{version}-%{release}
-Requires: python-future
+Requires: pypi(future)
 BuildRequires : buildreq-distutils3
-Provides: ouimeaux
-Provides: ouimeaux-python
-Provides: ouimeaux-python3
 BuildRequires : pypi(future)
 BuildRequires : pypi(gevent)
 BuildRequires : pypi(pyyaml)
@@ -81,7 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641465128
+export SOURCE_DATE_EPOCH=1641840135
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
