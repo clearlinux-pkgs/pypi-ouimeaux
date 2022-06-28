@@ -4,7 +4,7 @@
 #
 Name     : pypi-ouimeaux
 Version  : 0.8.2
-Release  : 26
+Release  : 27
 URL      : https://files.pythonhosted.org/packages/42/d6/f7a8804e25b0831dd729b11e66b45e3ea2f72a1748aaabd56a58abaf7ad2/ouimeaux-0.8.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/42/d6/f7a8804e25b0831dd729b11e66b45e3ea2f72a1748aaabd56a58abaf7ad2/ouimeaux-0.8.2.tar.gz
 Summary  : Open source control for Belkin WeMo devices
@@ -81,7 +81,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656390287
+export SOURCE_DATE_EPOCH=1656392396
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
