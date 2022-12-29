@@ -4,7 +4,7 @@
 #
 Name     : pypi-ouimeaux
 Version  : 0.8.2
-Release  : 32
+Release  : 33
 URL      : https://files.pythonhosted.org/packages/42/d6/f7a8804e25b0831dd729b11e66b45e3ea2f72a1748aaabd56a58abaf7ad2/ouimeaux-0.8.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/42/d6/f7a8804e25b0831dd729b11e66b45e3ea2f72a1748aaabd56a58abaf7ad2/ouimeaux-0.8.2.tar.gz
 Summary  : Open source control for Belkin WeMo devices
@@ -21,6 +21,9 @@ BuildRequires : pypi(gevent)
 BuildRequires : pypi(pyyaml)
 BuildRequires : pypi(requests)
 BuildRequires : pypi(six)
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 # ouimeaux
@@ -81,12 +84,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656392396
+export SOURCE_DATE_EPOCH=1672296437
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$FFLAGS -fno-lto "
-export FFLAGS="$FFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -103,9 +106,9 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-ouimeaux
-cp %{_builddir}/ouimeaux-0.8.2/LICENSE %{buildroot}/usr/share/package-licenses/pypi-ouimeaux/bd94797889ab4f12d1037fa66c10dca1d6ab6cc3
-cp %{_builddir}/ouimeaux-0.8.2/ouimeaux/pysignals/LICENSE.txt %{buildroot}/usr/share/package-licenses/pypi-ouimeaux/6b592f04d077053c80d47f3a8321d21aad45dd69
-cp %{_builddir}/ouimeaux-0.8.2/ouimeaux/pysignals/license.python.txt %{buildroot}/usr/share/package-licenses/pypi-ouimeaux/e6e9a006706b5c1187a7ce23ca2135406cc0388d
+cp %{_builddir}/ouimeaux-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-ouimeaux/bd94797889ab4f12d1037fa66c10dca1d6ab6cc3 || :
+cp %{_builddir}/ouimeaux-%{version}/ouimeaux/pysignals/LICENSE.txt %{buildroot}/usr/share/package-licenses/pypi-ouimeaux/6b592f04d077053c80d47f3a8321d21aad45dd69 || :
+cp %{_builddir}/ouimeaux-%{version}/ouimeaux/pysignals/license.python.txt %{buildroot}/usr/share/package-licenses/pypi-ouimeaux/e6e9a006706b5c1187a7ce23ca2135406cc0388d || :
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
